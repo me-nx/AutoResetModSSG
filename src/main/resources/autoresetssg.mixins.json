@@ -1,11 +1,12 @@
 {
   "required": true,
-  "package": "me.duncanruns.autoreset.mixin",
+  "package": "com.github.menx.autoresetmodssg.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "CreateWorldScreenMixin",
     "OptionsScreenMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "MoreOptionsDialogMixin"
   ],
   "client": [],
   "server": [],

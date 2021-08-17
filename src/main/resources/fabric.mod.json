@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "autoreset",
+  "id": "autoresetssg",
   "version": "${version}",
-  "name": "Auto Reset Mod",
+  "name": "Auto Reset Mod SSG",
   "description": "yooo",
   "authors": [
-    "DuncanRuns"
+    "DuncanRuns",
+    "me_nx"
   ],
   "contributors": [],
   "contact": {},
@@ -14,13 +15,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "me.duncanruns.autoreset.AutoReset"
+      "com.github.menx.autoresetmodssg.AutoResetSSG"
     ],
     "client": [],
     "server": []
   },
   "mixins": [
-    "autoreset.mixins.json"
+    "autoresetssg.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.10.0"

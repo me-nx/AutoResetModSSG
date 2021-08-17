@@ -1,6 +1,6 @@
-package me.duncanruns.autoreset.mixin;
+package com.github.menx.autoresetmodssg.mixin;
 
-import me.duncanruns.autoreset.AutoReset;
+import com.github.menx.autoresetmodssg.AutoResetSSG;
 import net.minecraft.client.gui.screen.SaveLevelScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -23,7 +23,7 @@ public abstract class OptionsScreenMixin extends Screen {
 
     @Inject(method = "init", at = @At("TAIL"))
     private void addStopRunButtonMixin(CallbackInfo info) {
-        if (AutoReset.isPlaying) {
+        if (AutoResetSSG.isPlaying) {
 
             // Get menu.stop_resets text or set to default
             Text text;
@@ -35,7 +35,7 @@ public abstract class OptionsScreenMixin extends Screen {
 
             //Add button to disable the auto reset and quit
             this.addButton(new ButtonWidget(0, this.height - 20, 100, 20, text, (buttonWidget) -> {
-                AutoReset.isPlaying = false;
+                AutoResetSSG.isPlaying = false;
                 buttonWidget.active = false;
                 this.client.world.disconnect();
                 this.client.disconnect(new SaveLevelScreen(new TranslatableText("menu.savingLevel")));

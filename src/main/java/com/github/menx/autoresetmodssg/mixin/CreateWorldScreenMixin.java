@@ -3,6 +3,7 @@ package com.github.menx.autoresetmodssg.mixin;
 import com.github.menx.autoresetmodssg.AutoResetSSG;
 import net.minecraft.client.gui.screen.world.CreateWorldScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import org.apache.logging.log4j.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,7 +25,9 @@ public abstract class CreateWorldScreenMixin {
         // If auto reset mode is on, set difficulty to easy, set world options and create world.
         if (AutoResetSSG.isPlaying && !AutoResetSSG.isCreatingWorld) {
             AutoResetSSG.isCreatingWorld = true;
-            levelNameField.setText("Set seed speedrun #" + AutoResetSSG.getNextAttempt());
+            int attemptId = AutoResetSSG.getNextAttempt();
+            AutoResetSSG.LOGGER.log(Level.INFO, "Creating world #" + attemptId + " with seed: " + AutoResetSSG.seed);
+            levelNameField.setText("Set seed speedrun #" + attemptId);
             seedField.setText(String.valueOf(AutoResetSSG.seed));
             createLevel();
         }

@@ -4,9 +4,8 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "CreateWorldScreenMixin",
-    "OptionsScreenMixin",
-    "TitleScreenMixin",
-    "MoreOptionsDialogMixin"
+    "SettingsScreenMixin",
+    "TitleScreenMixin"
   ],
   "client": [],
   "server": [],

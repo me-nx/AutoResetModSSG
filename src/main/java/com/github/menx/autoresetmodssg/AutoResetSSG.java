@@ -15,6 +15,7 @@ public class AutoResetSSG implements ModInitializer {
     public static final String MOD_NAME = "Auto Reset Mod SSG";
     private static final long DEFAULT_SEED = 1;
     public static boolean isPlaying = false;
+    public static boolean isCreatingWorld = false;
     public static long seed;
     public static Logger LOGGER = LogManager.getLogger();
 

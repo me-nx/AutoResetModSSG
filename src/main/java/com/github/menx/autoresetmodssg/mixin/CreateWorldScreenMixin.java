@@ -5,6 +5,7 @@ import net.minecraft.client.gui.screen.world.CreateWorldScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.world.Difficulty;
+import org.apache.logging.log4j.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -31,7 +32,9 @@ public abstract class CreateWorldScreenMixin {
         if (AutoResetSSG.isPlaying) {
             field_24289 = Difficulty.EASY;
             field_24290 = Difficulty.EASY;
-            levelNameField.setText("Set seed speedrun #"+AutoResetSSG.getNextAttempt());
+            int attemptId = AutoResetSSG.getNextAttempt();
+            AutoResetSSG.LOGGER.log(Level.INFO, "Creating world #" + attemptId + " with seed: " + AutoResetSSG.seed);
+            levelNameField.setText("Set seed speedrun #" + attemptId);
             setMoreOptionsOpen(true);
             setMoreOptionsOpen(false);
             createLevel();

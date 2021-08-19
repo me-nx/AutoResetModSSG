@@ -10,6 +10,7 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Language;
+import org.apache.logging.log4j.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -36,6 +37,7 @@ public abstract class OptionsScreenMixin extends Screen {
             //Add button to disable the auto reset and quit
             this.addButton(new ButtonWidget(0, this.height - 20, 100, 20, text, (buttonWidget) -> {
                 AutoResetSSG.isPlaying = false;
+                AutoResetSSG.LOGGER.log(Level.INFO, "Auto reset (ssg): off");
                 buttonWidget.active = false;
                 this.client.world.disconnect();
                 this.client.disconnect(new SaveLevelScreen(new TranslatableText("menu.savingLevel")));

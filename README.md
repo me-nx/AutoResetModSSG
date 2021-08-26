@@ -1,3 +1,5 @@
+**WARNING:** This mod is **not** valid for speedruns on http://speedrun.com/mc.
+
 ## Installation
 
 1. Install Fabric mod loader
@@ -21,8 +23,6 @@ To change the seed, edit seed.txt file
 This mod is a set seed version of DuncanRuns [AutoResetMod](https://github.com/DuncanRuns/AutoResetMod). I just tweaked it to load a seed.
 
 ## Info and Compatibility
-
-> **WARNING:** This mod is **not** valid for speedruns on http://speedrun.com/mc. I'm working on getting it verified.
 
 Original AutoResetMod (random seed) is compatible (https://github.com/DuncanRuns/AutoResetMod/releases).
 

@@ -1,6 +1,7 @@
 package com.github.menx.autoresetmodssg.mixin;
 
 import com.github.menx.autoresetmodssg.AutoResetSSG;
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.screen.world.CreateWorldScreen;
@@ -28,14 +29,14 @@ public abstract class TitleScreenMixin extends Screen {
     private void initMixin(CallbackInfo info) {
         // If auto reset mode is on, instantly switch to create world menu.
         if (AutoResetSSG.isPlaying) {
-            client.openScreen(new CreateWorldScreen(this));
+            client.setScreen(CreateWorldScreen.create(this));
         } else if (!this.client.isDemo()) {
             // Add new button for starting auto resets.
             int y = this.height / 4 + Y_OFFSET;
-            this.addButton(new ButtonWidget(this.width / 2 - 124, y, 20, 20, new LiteralText(""), (buttonWidget) -> {
+            this.addDrawableChild(new ButtonWidget(this.width / 2 - 124, y, 20, 20, new LiteralText(""), (buttonWidget) -> {
                 AutoResetSSG.isPlaying = true;
                 AutoResetSSG.LOGGER.log(Level.INFO, "Auto reset (ssg): on");
-                client.openScreen(new CreateWorldScreen(this));
+                client.setScreen(CreateWorldScreen.create(this));
             }));
         }
     }
@@ -43,7 +44,7 @@ public abstract class TitleScreenMixin extends Screen {
     @Inject(method = "render", at = @At("TAIL"))
     private void ironBootsOverlayMixin(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         int y = this.height / 4 + Y_OFFSET;
-        this.client.getTextureManager().bindTexture(IRON_BOOTS);
+        RenderSystem.setShaderTexture(0, IRON_BOOTS);
         drawTexture(matrices,(width/2)-122,y+2,0.0F,0.0F,16,16,16,16);
     }
 }

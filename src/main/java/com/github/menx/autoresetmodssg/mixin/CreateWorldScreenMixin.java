@@ -15,9 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(CreateWorldScreen.class)
 public abstract class CreateWorldScreenMixin {
     @Shadow
-    private Difficulty field_24289;
-    @Shadow
-    private Difficulty field_24290;
+    private Difficulty currentDifficulty;
     @Shadow
     private TextFieldWidget levelNameField;
 
@@ -30,8 +28,7 @@ public abstract class CreateWorldScreenMixin {
     private void autoStartMixin(CallbackInfo info) {
         // If auto reset mode is on, set difficulty to easy, set world options and create world.
         if (AutoResetSSG.isPlaying) {
-            field_24289 = Difficulty.EASY;
-            field_24290 = Difficulty.EASY;
+            currentDifficulty = Difficulty.EASY;
             int attemptId = AutoResetSSG.getNextAttempt();
             AutoResetSSG.LOGGER.log(Level.INFO, "Creating world #" + attemptId + " with seed: " + AutoResetSSG.seed);
             levelNameField.setText("Set seed speedrun #" + attemptId);

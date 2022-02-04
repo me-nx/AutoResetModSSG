@@ -1,3 +1,8 @@
+# Update
+You probably want to use this mod instead (allowed on src): https://github.com/VoidXWalker/atum
+
+---
+
 **WARNING:** This mod is **not** valid for speedruns on http://speedrun.com/mc.
 
 ## Installation
